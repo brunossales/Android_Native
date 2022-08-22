@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/BrunoSales/AndroidStudioProjects/Crypto/app/src/main/res/drawable/background_button.xml" value="0.2065" />
+        <entry key="..\:/Users/BrunoSales/AndroidStudioProjects/Crypto/app/src/main/res/drawable/background_intro.xml" value="0.1835" />
+        <entry key="..\:/Users/BrunoSales/AndroidStudioProjects/Crypto/app/src/main/res/drawable/dark_gray_background.xml" value="0.1635" />
+        <entry key="..\:/Users/BrunoSales/AndroidStudioProjects/Crypto/app/src/main/res/drawable/eddittext_background.xml" value="0.2065" />
+        <entry key="..\:/Users/BrunoSales/AndroidStudioProjects/Crypto/app/src/main/res/drawable/line_gold.xml" value="0.2" />
+        <entry key="..\:/Users/BrunoSales/AndroidStudioProjects/Crypto/app/src/main/res/layout/activity_details.xml" value="0.16417272338606242" />
+        <entry key="..\:/Users/BrunoSales/AndroidStudioProjects/Crypto/app/src/main/res/layout/activity_intro.xml" value="0.1" />
+        <entry key="..\:/Users/BrunoSales/AndroidStudioProjects/Crypto/app/src/main/res/layout/activity_screen_login.xml" value="0.16417272338606242" />
+        <entry key="..\:/Users/BrunoSales/AndroidStudioProjects/Crypto/app/src/main/res/layout/login_activity.xml" value="0.1" />
+        <entry key="..\:/Users/BrunoSales/AndroidStudioProjects/Crypto/app/src/main/res/layout/sigup_activity.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK" />
+</project>
