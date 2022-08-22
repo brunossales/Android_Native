@@ -7,7 +7,7 @@
 
 <div align="center">
     <h2>Veja Como ficou o projeto, qualidade menor por conta do gif:</h2>
-    <img src="#">
-        <a href="#"> </a>
+    <img src="https://github.com/brunossales/Android_Native/blob/main/Crypto/src/readmeGih.gif">
+        <a href="https://github.com/brunossales/Android_Native/blob/main/Crypto/src/readmeGih.gif"> </a>
     </img>
 </div>
