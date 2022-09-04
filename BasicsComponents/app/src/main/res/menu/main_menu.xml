@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="Perfil"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:id="@+id/actions_perfil"
+        app:showAsAction="never"
+        />
+
+    <item android:title="Seus Dados"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:id="@+id/actions_dados"
+        app:showAsAction="never"
+        />
+
+    <item android:title="Comunidade"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:id="@+id/actions_comunidade"
+        app:showAsAction="never"
+        />
+
+    <item android:title="Sobre"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:id="@+id/actions_sobre"
+        app:showAsAction="never"
+        />
+
+</menu>
