@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/image"
+    tools:context=".SegundaActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button1S"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="#FF0000"
+                android:gravity="center"
+                android:text="Voltar para  a Main Activity"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/buttonRec"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="#FF0000"
+                android:gravity="center"
+                android:text="Ir para tela 3 Recycle"
+                android:textColor="#FFFFFF" />
+
+            <ListView
+                android:id="@+id/listViewId"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#C82929"
+                android:cacheColorHint="#D5B3B3"
+                android:textAlignment="center"
+                android:textFilterEnabled="false" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

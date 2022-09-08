@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">BasicsComponents</string>
+
+    <string-array name="peaple">
+        <item>Bruno Sales</item>
+        <item>Marcio Espindola</item>
+        <item>Victor Gomes</item>
+        <item>Pedro Silva</item>
+        <item>Elixandre Silveira</item>
+        <item>Israel Negão</item>
+        <item>Icaro Caminha</item>
+    </string-array>
+
+</resources>
