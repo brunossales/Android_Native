@@ -46,8 +46,8 @@ public class Criptomoeda {
         return simbolo;
     }
 
-    public double getValor() {
-        return valor;
+    public String getValor() {
+        return "R$ " + valor;
     }
 
     @Override
