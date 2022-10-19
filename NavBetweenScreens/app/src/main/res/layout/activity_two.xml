@@ -4,15 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ActivityTwo">
+    tools:context=".ActivityTwo">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:ems="0"
-                android:hint="Símbolo &quot;$&quot;"
+                android:hint="Valor"
                 android:inputType="textPersonName"
                 android:minHeight="48dp" />
         </LinearLayout>
@@ -97,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="#ECADAD"
+                android:onClick="add"
                 android:text="Adicionar" />
 
             <Button
@@ -105,6 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="#F1B9B9"
+                android:onClick="back"
                 android:text="Voltar" />
         </LinearLayout>
 

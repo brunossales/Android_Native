@@ -36,14 +36,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             textViewSimbolo = itemView.findViewById(R.id.textViewSImbolo);
             textViewValor = itemView.findViewById(R.id.textViewValor);
             imageViewDelete = itemView.findViewById(R.id.imageViewDelete);
-            imageViewUpdate = itemView.findViewById(R.id.imageViewUpdate);
         }
 
         public TextView getTextViewNome() {return textViewNome;}
         public TextView getTextViewSimbolo() {return textViewSimbolo;}
         public TextView getTextViewValor() {return textViewValor;}
 
-        public ImageView getImageViewUpdate() {return imageViewUpdate;}
         public ImageView getImageViewDelete() {return imageViewDelete;}
     }
 
@@ -64,28 +62,23 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     public void onBindViewHolder( CustomAdapter.ViewHolder holder, int position) {
         Criptomoeda cripto = dataSet.get(position);
 
-        holder.getTextViewNome().setText(cripto.getNome());
-        holder.getTextViewValor().setText(cripto.getValor());
+        holder.getTextViewNome().setText("ID: " + cripto.getId() + ", Nome: "  +cripto.getNome());
+        holder.getTextViewValor().setText("R$: " + cripto.getValor());
         holder.getTextViewSimbolo().setText(cripto.getSimbolo());
 
         holder.getImageViewDelete().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Criptomoeda c = dataSet.get(holder.getAdapterPosition());
-                //activity.removerCriptomoeda(c);
+                activity.removerCripto(holder.getAdapterPosition());
             }
         });
 
-        holder.getImageViewUpdate().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //activity.editarCriptomoeda(holder.getAdapterPosition());
-            }
-        });
     }
 
     @Override
     public int getItemCount() {
+        if (dataSet == null)
+            return 0;
         return dataSet.size();
     }
 }

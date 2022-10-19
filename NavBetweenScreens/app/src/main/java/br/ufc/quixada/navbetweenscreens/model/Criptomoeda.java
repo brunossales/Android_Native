@@ -7,9 +7,9 @@ public class Criptomoeda {
 
     String nome;
     String simbolo;
-    double valor;
+    String valor;
 
-    public Criptomoeda(String nomeC, String simboloC, double valorC){
+    public Criptomoeda(String nomeC, String simboloC, String valorC){
         this.nome = nomeC;
         this.simbolo = simboloC;
         this.valor = valorC;
@@ -38,7 +38,7 @@ public class Criptomoeda {
         this.simbolo = simbolo;
     }
 
-    public void setValor(double valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 
@@ -47,7 +47,7 @@ public class Criptomoeda {
     }
 
     public String getValor() {
-        return "R$ " + valor;
+        return valor;
     }
 
     @Override

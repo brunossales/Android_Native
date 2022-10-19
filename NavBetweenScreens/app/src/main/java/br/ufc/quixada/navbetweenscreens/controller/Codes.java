@@ -10,4 +10,8 @@ public class Codes {
 
     public static final int Response_OK = 1;
 
+    public static final int REQUEST_ADD = 1;
+    public static final int REQUEST_EDT = 2;
+
+
 }

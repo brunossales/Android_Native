@@ -1,4 +1,4 @@
-package br.ufc.quixada.navbetweenscreens.view;
+package br.ufc.quixada.navbetweenscreens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,6 +25,8 @@ public class ActivityTwo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
+
         setContentView(R.layout.activity_two);
 
         id = -1;
@@ -37,8 +39,6 @@ public class ActivityTwo extends AppCompatActivity {
         buttonAdd = findViewById(R.id.buttonAdd);
 
         handleStorage();
-
-        handleFunctions();
     }
 
     public void handleStorage(){
@@ -58,34 +58,26 @@ public class ActivityTwo extends AppCompatActivity {
         }
     }
 
-    public void handleFunctions(){
 
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String nome = edtitNome.getText().toString();
-                String simbolo = editSimbolo.getText().toString();
-                String valor = editValor.getText().toString();
-
-                Intent intent = new Intent();
-
-                intent.putExtra(Codes.Key_Name, nome);
-                intent.putExtra(Codes.Key_Simbolo, simbolo);
-                intent.putExtra(Codes.Key_Valor, valor);
-
-                if( id >= 0) intent.putExtra(Codes.Key_ID, ""+id);
-
-                setResult(Codes.Response_OK, intent);
-                finish();
-            }
-        });
+    public void back(View v) {
+        finish();
     }
 
+
+    public void add(View view){
+        String nome = edtitNome.getText().toString();
+        String simbolo = editSimbolo.getText().toString();
+        String valor = editValor.getText().toString();
+
+        Intent intent = new Intent();
+
+        intent.putExtra(Codes.Key_Name, nome);
+        intent.putExtra(Codes.Key_Simbolo, simbolo);
+        intent.putExtra(Codes.Key_Valor, valor);
+
+        if( id >= 0) intent.putExtra(Codes.Key_ID, ""+id);
+
+        setResult(Codes.Response_OK, intent);
+        finish();
+    }
 }

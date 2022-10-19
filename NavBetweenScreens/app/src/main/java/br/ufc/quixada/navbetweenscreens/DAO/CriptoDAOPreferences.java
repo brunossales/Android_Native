@@ -9,7 +9,7 @@ import br.ufc.quixada.navbetweenscreens.model.Criptomoeda;
 
 public class CriptoDAOPreferences implements CriptoDAOInterface{
 
-    private static ArrayList<Criptomoeda>list;
+    private static ArrayList<Criptomoeda>list = new ArrayList<>();
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
     private static Context context;
@@ -41,8 +41,7 @@ public class CriptoDAOPreferences implements CriptoDAOInterface{
                 criptomoeda.setNome(c.getNome());
                 criptomoeda.setSimbolo(c.getSimbolo());
 
-                double valor = Double.parseDouble(c.getValor());
-                criptomoeda.setValor(valor);
+                criptomoeda.setValor(c.getValor());
                 edited = true;
                 break;
             }
