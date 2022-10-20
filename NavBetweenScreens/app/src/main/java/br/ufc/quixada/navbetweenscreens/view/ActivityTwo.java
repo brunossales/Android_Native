@@ -1,4 +1,4 @@
-package br.ufc.quixada.navbetweenscreens;
+package br.ufc.quixada.navbetweenscreens.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 

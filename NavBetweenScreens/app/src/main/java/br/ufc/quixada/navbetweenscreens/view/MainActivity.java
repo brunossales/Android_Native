@@ -1,4 +1,4 @@
-package br.ufc.quixada.navbetweenscreens;
+package br.ufc.quixada.navbetweenscreens.view;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +17,10 @@ import java.util.ArrayList;
 
 import br.ufc.quixada.navbetweenscreens.DAO.CriptoDAOInterface;
 import br.ufc.quixada.navbetweenscreens.DAO.CriptoDAOPreferences;
+import br.ufc.quixada.navbetweenscreens.R;
 import br.ufc.quixada.navbetweenscreens.controller.Codes;
 import br.ufc.quixada.navbetweenscreens.model.Criptomoeda;
+import br.ufc.quixada.navbetweenscreens.view.ActivityTwo;
 import br.ufc.quixada.navbetweenscreens.view.CustomAdapter;
 
 public class MainActivity extends AppCompatActivity {

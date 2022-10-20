@@ -1,6 +1,5 @@
 package br.ufc.quixada.navbetweenscreens.view;
 
-import android.view.ContentInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import br.ufc.quixada.navbetweenscreens.MainActivity;
 import br.ufc.quixada.navbetweenscreens.R;
 import br.ufc.quixada.navbetweenscreens.model.Criptomoeda;
 
