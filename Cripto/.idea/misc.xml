@@ -13,6 +13,12 @@
         <entry key="..\:/Users/bruno.sales/Desktop/Android_Native/Cripto/app/src/main/res/layout/intro_activity.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/bruno.sales/Desktop/Android_Native/Cripto/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.114" />
         <entry key="..\:/Users/bruno.sales/Desktop/Android_Native/Cripto/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.114" />
+        <entry key="..\:/codes/Android_Native/Cripto/app/src/main/res/drawable/background_feed.xml" value="0.16" />
+        <entry key="..\:/codes/Android_Native/Cripto/app/src/main/res/drawable/background_intro.xml" value="0.16" />
+        <entry key="..\:/codes/Android_Native/Cripto/app/src/main/res/layout/activity_feed.xml" value="0.5" />
+        <entry key="..\:/codes/Android_Native/Cripto/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/codes/Android_Native/Cripto/app/src/main/res/layout/cripto_layout.xml" value="0.25" />
+        <entry key="..\:/codes/Android_Native/Cripto/app/src/main/res/layout/intro_activity.xml" value="0.2" />
       </map>
     </option>
   </component>

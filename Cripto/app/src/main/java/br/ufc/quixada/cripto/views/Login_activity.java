@@ -1,4 +1,4 @@
-package br.ufc.quixada.cripto;
+package br.ufc.quixada.cripto.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import br.ufc.quixada.cripto.R;
 
 public class Login_activity extends AppCompatActivity {
     Intent intent;
+    TextView textRegister;
     Button buttonLoggin;
     EditText emailLogin, senhaLogin;
     String email, password;
@@ -21,6 +23,7 @@ public class Login_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
 
         handleEvents();
@@ -31,6 +34,7 @@ public class Login_activity extends AppCompatActivity {
         buttonLoggin = findViewById(R.id.buttonSubmitLogin);
         emailLogin = findViewById(R.id.loginEmail);
         senhaLogin = findViewById(R.id.loginSenha);
+        textRegister = findViewById(R.id.textViewLogin4);
 
         buttonLoggin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +52,13 @@ public class Login_activity extends AppCompatActivity {
                       Toast.LENGTH_LONG
                     ).show();
                 }
+            }
+        });
+
+        textRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intent);
             }
         });
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login_activity"
+    tools:context=".views.Login_activity"
     android:background="#16181c">
 
 
@@ -106,12 +106,12 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textViewLogin4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Você já tem conta?\nRegistre-se"
+                    android:text="Você não tem conta?\nRegistre-se"
                     android:textAlignment="center"
-                    android:textColor="#ffffff"
+                    android:textColor="#99A6EC"
                     android:textSize="14sp" />
 
                 <Button

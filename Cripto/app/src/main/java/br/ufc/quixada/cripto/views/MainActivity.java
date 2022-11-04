@@ -1,4 +1,4 @@
-package br.ufc.quixada.cripto;
+package br.ufc.quixada.cripto.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import br.ufc.quixada.cripto.R;
+
 public class MainActivity extends AppCompatActivity {
     ImageView buttonIntro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.intro_activity);
 
         handleEvents();
