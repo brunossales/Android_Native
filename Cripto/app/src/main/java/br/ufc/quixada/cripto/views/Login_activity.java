@@ -11,9 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import br.ufc.quixada.cripto.R;
+import br.ufc.quixada.cripto.controller.Codes;
 
 public class Login_activity extends AppCompatActivity {
-    Intent intent;
+    Intent intent, intent2;
     TextView textRegister;
     Button buttonLoggin;
     EditText emailLogin, senhaLogin;
@@ -31,10 +32,15 @@ public class Login_activity extends AppCompatActivity {
 
     public void handleEvents(){
         intent = new Intent(Login_activity.this, Sigup_activity.class);
+        intent2 = new Intent(Login_activity.this, Feed_activity.class);
+
         buttonLoggin = findViewById(R.id.buttonSubmitLogin);
         emailLogin = findViewById(R.id.loginEmail);
         senhaLogin = findViewById(R.id.loginSenha);
+
+
         textRegister = findViewById(R.id.textViewLogin4);
+
 
         buttonLoggin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +49,8 @@ public class Login_activity extends AppCompatActivity {
                 password = senhaLogin.getText().toString();
 
                 if (email.equals("admin") && password.equals("admin")){
-                    startActivity(intent);
+                    intent2.putExtra(Codes.Key_BemVindo, email);
+                    startActivity(intent2);
                 }
                 else{
                     Toast.makeText(

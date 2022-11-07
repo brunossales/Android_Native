@@ -14,7 +14,13 @@
         android:theme="@style/Theme.Cripto"
         tools:targetApi="31">
         <activity
-            android:name=".Feed_activity"
+            android:name=".views.Star_activity"
+            android:exported="false" />
+        <activity
+            android:name=".views.Change_add_activity"
+            android:exported="false" />
+        <activity
+            android:name=".views.Feed_activity"
             android:exported="false" />
         <activity
             android:name=".views.Sigup_activity"

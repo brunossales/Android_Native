@@ -1,6 +1,8 @@
 package br.ufc.quixada.cripto.model;
 
-public class Criptomoeda {
+import java.io.Serializable;
+
+public class Criptomoeda implements Serializable {
     static int geradorDeIds = -1;
     int id;
 

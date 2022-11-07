@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_feed"
-    tools:context=".views.Feed_activity">
+    tools:context=".views.Star_activity">
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,70 +19,54 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textViewBem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="6"
-                    android:fontFamily="@font/squre"
-                    android:text="Bem vindo"
-                    android:textColor="#0E0707"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/feedVoltar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="2"
-                    android:minHeight="48dp"
-                    android:onClick="backTologin"
-                    app:srcCompat="?attr/homeAsUpIndicator"
-                    app:tint="#1B1919"
-                    tools:ignore="SpeakableTextPresentCheck" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textViewName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="7"
                     android:fontFamily="@font/squre"
                     android:textAllCaps="true"
                     android:textColor="@color/design_default_color_primary_dark"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     tools:ignore="SpeakableTextPresentCheck" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textCadastradas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="7"
                     android:fontFamily="@font/squre"
                     android:gravity="center"
-                    android:text="Criptomoedas Cadastradas"
+                    android:text="Criptomoedas Favoritas "
                     android:textColor="#1C1414"
                     android:textSize="25sp" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="2"
+                    app:srcCompat="@android:drawable/btn_star_big_on" />
             </LinearLayout>
 
             <LinearLayout
@@ -96,21 +81,11 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|bottom"
-            android:layout_marginBottom="20dp"
-            android:onClick="handleAdd"
-            android:src="@drawable/ic_baseline_add_24"
-            app:backgroundTint="#1B54E4"
-            tools:ignore="SpeakableTextPresentCheck" />
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
@@ -134,5 +109,6 @@
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

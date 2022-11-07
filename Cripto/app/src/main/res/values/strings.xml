@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Cripto</string>
+    <string name="in_cio">Início</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="pesquisar">Pesquisar</string>
+    <string name="sobre">Sobre</string>
+    <string name="inicio" />
 </resources>

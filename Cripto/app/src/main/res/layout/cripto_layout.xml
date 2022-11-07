@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -15,6 +17,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp">
 
@@ -23,8 +27,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="6"
+                android:fontFamily="@font/squre"
                 android:text="TextView"
-                android:textSize="20sp" />
+                android:textColor="#1C1414"
+                android:textSize="20sp"
+                android:textStyle="normal|bold" />
+
+            <Switch
+                android:id="@+id/buttonSwitchStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:checked="false"
+                android:focusable="true"
+                android:minHeight="48dp"
+                android:scrollbarSize="4dp"
+                android:text="Favorito"
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <ImageView
                 android:id="@+id/imageViewUpdate"
@@ -32,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@android:drawable/ic_menu_edit"
-                app:tint="#812424" />
+                app:tint="#2613FD" />
 
             <ImageView
                 android:id="@+id/imageViewDelete"
@@ -46,45 +67,58 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="right"
             android:layout_weight="7"
-            android:orientation="horizontal">
+            android:gravity="center|start"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp">
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="50dp"
+                android:layout_width="80dp"
                 android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="#FFFFFF"
+                android:background="#B2BCED"
                 android:paddingLeft="-10dp"
-                app:srcCompat="@drawable/vectorbitcoin" />
+                app:srcCompat="@drawable/ic_baseline_euro_symbol_24" />
 
             <TextView
                 android:id="@+id/textViewSImbolo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="7"
-                android:text="TextView" />
+                android:fontFamily="@font/squre"
+                android:paddingLeft="20dp"
+                android:text="TextView"
+                android:textColor="#1C1414"
+                android:textSize="18sp"
+                android:textStyle="normal" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:gravity="center|start"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp">
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="50dp"
+                android:layout_width="80dp"
                 android:layout_height="50dp"
-                android:layout_weight="1"
+                android:background="#B2BCED"
                 android:paddingLeft="-10dp"
-                app:srcCompat="@drawable/vectorcifrao" />
+                app:srcCompat="@drawable/ic_baseline_attach_money_24" />
 
             <TextView
                 android:id="@+id/textViewValor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="7"
-                android:text="TextView" />
+                android:fontFamily="@font/squre"
+                android:paddingLeft="20dp"
+                android:text="TextView"
+                android:textColor="#1C1414"
+                android:textSize="18sp"
+                android:textStyle="normal" />
         </LinearLayout>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
