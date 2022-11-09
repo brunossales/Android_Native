@@ -2,6 +2,7 @@ package br.ufc.quixada.cripto.views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,6 +10,7 @@ import br.ufc.quixada.cripto.DAO.CriptoDAOInterface;
 import br.ufc.quixada.cripto.DAO.CriptoDAOPreferences;
 import br.ufc.quixada.cripto.R;
 import br.ufc.quixada.cripto.adapters.CustomAdapter;
+import br.ufc.quixada.cripto.adapters.CustomAdapterFind;
 import br.ufc.quixada.cripto.adapters.CustomAdapterStar;
 import br.ufc.quixada.cripto.controller.Codes;
 import br.ufc.quixada.cripto.model.Criptomoeda;
@@ -24,7 +26,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 
-public class Star_activity extends AppCompatActivity {
+public class Find_activity extends AppCompatActivity {
     Intent intent;
     String nameUser;
 
@@ -32,58 +34,58 @@ public class Star_activity extends AppCompatActivity {
 
     BottomNavigationView nav;
 
-    CustomAdapterStar customAdapter;
+    CustomAdapterFind customAdapter;
     RecyclerView recyclerView;
 
     CriptoDAOInterface criptoDAO;
 
-    ArrayList<Criptomoeda> listStar;
+    ArrayList<Criptomoeda> listFind, listAll;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_star);
+        setContentView(R.layout.activity_find);
         getSupportActionBar().hide();
-
 
         userText = findViewById(R.id.textViewName);
         nameUser = getIntent().getExtras().getString(Codes.Key_BemVindo);
         userText.setText(nameUser);
 
         criptoDAO = CriptoDAOPreferences.getInstance(this);
-        listStar = criptoDAO.getListaCriptoStars();
+        listAll = criptoDAO.getListaCripto();
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Star_activity.this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Find_activity.this);
 
-
-        customAdapter = new CustomAdapterStar(this, listStar);
-        recyclerView = findViewById(R.id.recyclerStarCripto);
+        customAdapter = new CustomAdapterFind(this, listAll);
+        recyclerView = findViewById(R.id.recycletFindCripto);
         recyclerView.setLayoutManager( linearLayoutManager );
         recyclerView.setAdapter(customAdapter);
 
+        recyclerView.addItemDecoration(new DividerItemDecoration( this, DividerItemDecoration.VERTICAL));
+
         nav = findViewById(R.id.bottomNavigationView);
 
-        nav.setSelectedItemId(R.id.star);
+        nav.setSelectedItemId(R.id.search);
 
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.homee:
+                    case R.id.star:
                         intent = null;
-                        intent = new Intent(Star_activity.this, Feed_activity.class);
+                        intent = new Intent(Find_activity.this, Star_activity.class);
                         intent.putExtra(Codes.Key_BemVindo, nameUser);
                         startActivity(intent);
                         break;
-                    case R.id.search:
+                    case R.id.homee:
                         intent = null;
-                        intent = new Intent(Star_activity.this, Find_activity.class);
+                        intent = new Intent(Find_activity.this, Feed_activity.class);
                         intent.putExtra(Codes.Key_BemVindo, nameUser);
                         startActivity(intent);
                         break;
                     case R.id.aboutwithus:
-                        Toast.makeText(Star_activity.this, "Sobre pressionado", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Find_activity.this, "Sobre pressionado", Toast.LENGTH_SHORT).show();
                         break;
 
                     default:
@@ -91,6 +93,5 @@ public class Star_activity extends AppCompatActivity {
                 return true;
             }
         });
-
     }
 }

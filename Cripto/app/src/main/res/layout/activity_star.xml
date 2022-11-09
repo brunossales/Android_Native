@@ -8,79 +8,74 @@
     tools:context=".views.Star_activity">
 
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="15dp"
+        tools:layout_editor_absoluteY="25dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:fontFamily="@font/squre"
+                android:textAllCaps="true"
+                android:textColor="@color/design_default_color_primary_dark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textCadastradas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:fontFamily="@font/squre"
+                android:gravity="center"
+                android:text="Criptomoedas Favoritas "
+                android:textColor="#1C1414"
+                android:textSize="25sp" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="2"
+                app:srcCompat="@android:drawable/btn_star_big_on" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:layout_marginBottom="50dp"
+            android:orientation="horizontal">
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerStarCripto"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
-                android:orientation="horizontal">
+                android:layout_height="match_parent" />
 
-                <TextView
-                    android:id="@+id/textViewName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="7"
-                    android:fontFamily="@font/squre"
-                    android:textAllCaps="true"
-                    android:textColor="@color/design_default_color_primary_dark"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textCadastradas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="7"
-                    android:fontFamily="@font/squre"
-                    android:gravity="center"
-                    android:text="Criptomoedas Favoritas "
-                    android:textColor="#1C1414"
-                    android:textSize="25sp" />
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="2"
-                    app:srcCompat="@android:drawable/btn_star_big_on" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewCriptomoedas"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"

@@ -13,10 +13,14 @@ public interface CriptoDAOInterface {
 
     boolean addCripto(Criptomoeda c);
     boolean editCripto(Criptomoeda c);
+    boolean editIsStar(int criptoId);
+
     boolean deleteCripto(int criptoId);
     boolean deleteAll();
 
     Criptomoeda getCripto(int criptoId);
     ArrayList<Criptomoeda> getListaCripto();
+    ArrayList<Criptomoeda> getListaCriptoStars();
+
 
 }

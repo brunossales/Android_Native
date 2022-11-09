@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -33,38 +32,6 @@
                 android:textColor="#1C1414"
                 android:textSize="20sp"
                 android:textStyle="normal|bold" />
-
-            <Switch
-                android:id="@+id/buttonSwitchStar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:focusable="true"
-                android:fontFamily="@font/squre"
-                android:minHeight="48dp"
-                android:scrollbarSize="4dp"
-                android:text="Favorito"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:thumbTint="#F2FFC100"
-                android:thumbTintMode="src_in" />
-
-            <ImageView
-                android:id="@+id/imageViewUpdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@android:drawable/ic_menu_edit"
-                app:tint="#2613FD" />
-
-            <ImageView
-                android:id="@+id/imageViewDelete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                app:srcCompat="@android:drawable/ic_delete" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -80,9 +47,9 @@
                 android:id="@+id/imageView3"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
-                android:background="#B2BCED"
+                android:background="#CAA840"
                 android:paddingLeft="-10dp"
-                app:srcCompat="@drawable/ic_baseline_euro_symbol_24" />
+                android:src="@drawable/ic_baseline_euro_symbol_24" />
 
             <TextView
                 android:id="@+id/textViewSImbolo"
@@ -107,9 +74,9 @@
                 android:id="@+id/imageView4"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
-                android:background="#B2BCED"
+                android:background="#CAA840"
                 android:paddingLeft="-10dp"
-                app:srcCompat="@drawable/ic_baseline_attach_money_24" />
+                android:src="@drawable/ic_baseline_attach_money_24" />
 
             <TextView
                 android:id="@+id/textViewValor"

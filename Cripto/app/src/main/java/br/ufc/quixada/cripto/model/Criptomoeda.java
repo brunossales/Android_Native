@@ -10,6 +10,7 @@ public class Criptomoeda implements Serializable {
     String nome;
     String simbolo;
     String valor;
+    boolean isStar = false;
 
     public Criptomoeda(String nomeC, String simboloC, String valorC){
         this.nome = nomeC;
@@ -50,6 +51,14 @@ public class Criptomoeda implements Serializable {
 
     public String getValor() {
         return valor;
+    }
+
+    public void setStar(boolean star) {
+        isStar = star;
+    }
+
+    public boolean isStar() {
+        return isStar;
     }
 
     @Override

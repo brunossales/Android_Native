@@ -1,9 +1,11 @@
-package br.ufc.quixada.cripto.views;
+package br.ufc.quixada.cripto.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,10 +15,12 @@ import java.util.ArrayList;
 
 import br.ufc.quixada.cripto.R;
 import br.ufc.quixada.cripto.model.Criptomoeda;
+import br.ufc.quixada.cripto.views.Find_activity;
+import br.ufc.quixada.cripto.views.Star_activity;
 
-public class CustomAdapter  extends  RecyclerView.Adapter<CustomAdapter.ViewHolder>{
+public class CustomAdapterStar extends  RecyclerView.Adapter<CustomAdapterStar.ViewHolder>{
     ArrayList<Criptomoeda> dataSet;
-    Feed_activity activity;
+    Star_activity activity;
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -25,8 +29,6 @@ public class CustomAdapter  extends  RecyclerView.Adapter<CustomAdapter.ViewHold
         TextView textViewSimbolo;
         TextView textViewValor;
 
-        ImageView imageViewUpdate;
-        ImageView imageViewDelete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -34,19 +36,14 @@ public class CustomAdapter  extends  RecyclerView.Adapter<CustomAdapter.ViewHold
             textViewNome = itemView.findViewById(R.id.textViewNome);
             textViewSimbolo = itemView.findViewById(R.id.textViewSImbolo);
             textViewValor = itemView.findViewById(R.id.textViewValor);
-            imageViewDelete = itemView.findViewById(R.id.imageViewDelete);
-            imageViewUpdate = itemView.findViewById(R.id.imageViewUpdate);
         }
 
         public TextView getTextViewNome() {return textViewNome;}
         public TextView getTextViewSimbolo() {return textViewSimbolo;}
         public TextView getTextViewValor() {return textViewValor;}
-
-        public ImageView getImageViewDelete() {return imageViewDelete;}
-        public ImageView getImageViewUpdate() {return imageViewUpdate;}
     }
 
-    public CustomAdapter(Feed_activity activity, ArrayList<Criptomoeda> data){
+    public CustomAdapterStar(Star_activity activity, ArrayList<Criptomoeda> data){
         this.dataSet = data;
         this.activity = activity;
     }
@@ -54,36 +51,23 @@ public class CustomAdapter  extends  RecyclerView.Adapter<CustomAdapter.ViewHold
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CustomAdapterStar.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(
                 parent.getContext()).inflate(
-                    R.layout.cripto_layout,
-                    parent,
-                    false
-                );
-        return new ViewHolder(view);
+                R.layout.cripto_start_layout,
+                parent,
+                false
+        );
+        return new CustomAdapterStar.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(CustomAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(CustomAdapterStar.ViewHolder holder, int position) {
         Criptomoeda cripto = dataSet.get(position);
 
         holder.getTextViewNome().setText("Nome: "  +cripto.getNome());
         holder.getTextViewValor().setText("R$: " + cripto.getValor());
         holder.getTextViewSimbolo().setText(cripto.getSimbolo());
-
-        holder.getImageViewDelete().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Criptomoeda cri = dataSet.get(holder.getAdapterPosition());
-                activity.removerCripto(cri);
-            }
-        });
-
-        holder.getImageViewUpdate().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {activity.updateCripto(holder.getAdapterPosition());}
-        });
     }
 
     @Override

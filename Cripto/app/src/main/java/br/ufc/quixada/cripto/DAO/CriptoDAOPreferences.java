@@ -49,6 +49,21 @@ public class CriptoDAOPreferences implements CriptoDAOInterface{
     }
 
     @Override
+    public boolean editIsStar(int criptoId) {
+        boolean modified = false;
+
+        for (Criptomoeda criptomoeda : list){
+            if (criptomoeda.getId() == criptoId){
+                if (criptomoeda.isStar()){criptomoeda.setStar(false);}
+                else {criptomoeda.setStar(true);}
+                modified = true;
+                break;
+            }
+        }
+        return modified;
+    }
+
+    @Override
     public boolean deleteCripto(int criptoId) {
 
         boolean deleted = false;
@@ -87,5 +102,15 @@ public class CriptoDAOPreferences implements CriptoDAOInterface{
     @Override
     public ArrayList<Criptomoeda> getListaCripto() {
         return list;
+    }
+
+    @Override
+    public ArrayList<Criptomoeda> getListaCriptoStars() {
+        ArrayList<Criptomoeda> criptoFavorites = new ArrayList<>();
+        for (Criptomoeda cri : list){
+            if(cri.isStar()){criptoFavorites.add(cri);}
+        }
+
+        return criptoFavorites;
     }
 }

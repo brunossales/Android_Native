@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import br.ufc.quixada.cripto.DAO.CriptoDAOInterface;
 import br.ufc.quixada.cripto.DAO.CriptoDAOPreferences;
 import br.ufc.quixada.cripto.R;
+import br.ufc.quixada.cripto.adapters.CustomAdapter;
 import br.ufc.quixada.cripto.controller.Codes;
 import br.ufc.quixada.cripto.model.Criptomoeda;
 
@@ -23,6 +24,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Feed_activity extends AppCompatActivity {
@@ -30,7 +32,7 @@ public class Feed_activity extends AppCompatActivity {
 
     Intent intent;
 
-    ArrayList<Criptomoeda> list;
+    ArrayList<Criptomoeda> list, listStar = new ArrayList<Criptomoeda>();
 
     CustomAdapter customAdapter;
     RecyclerView recyclerView;
@@ -38,6 +40,7 @@ public class Feed_activity extends AppCompatActivity {
     CriptoDAOInterface criptoDAO;
 
     BottomNavigationView nav;
+
 
     TextView  textViewBemVindo;
 
@@ -56,10 +59,11 @@ public class Feed_activity extends AppCompatActivity {
         criptoDAO = CriptoDAOPreferences.getInstance(this);
         list = criptoDAO.getListaCripto();
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Feed_activity.this);
 
         customAdapter = new CustomAdapter(this, list);
-        recyclerView = findViewById(R.id.recyclerViewCriptomoedas);
+        recyclerView = findViewById(R.id.recyclerCriptoFeed);
         recyclerView.setLayoutManager( linearLayoutManager );
         recyclerView.setAdapter(customAdapter);
 
@@ -71,9 +75,6 @@ public class Feed_activity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.homee:
-                        Toast.makeText(Feed_activity.this, "Home pressionado", Toast.LENGTH_SHORT).show();
-                        break;
                     case R.id.star:
                         intent = null;
                         intent = new Intent(Feed_activity.this, Star_activity.class);
@@ -81,7 +82,10 @@ public class Feed_activity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.search:
-                        Toast.makeText(Feed_activity.this, "Pesquisar pressionado", Toast.LENGTH_SHORT).show();
+                        intent = null;
+                        intent = new Intent(Feed_activity.this, Find_activity.class);
+                        intent.putExtra(Codes.Key_BemVindo, nameUser);
+                        startActivity(intent);
                         break;
                     case R.id.aboutwithus:
                         Toast.makeText(Feed_activity.this, "Sobre pressionado", Toast.LENGTH_SHORT).show();
@@ -108,6 +112,11 @@ public class Feed_activity extends AppCompatActivity {
     public void handleAdd(View view){
         Intent intent = new Intent(this, Change_add_activity.class);
         startActivityForResult(intent, Codes.REQUEST_ADD);
+    }
+
+    public void setCriptoStarFeed(int criptoID){
+        criptoDAO.editIsStar(criptoID);
+        customAdapter.notifyDataSetChanged();
     }
 
     public void updateCripto(int pos){

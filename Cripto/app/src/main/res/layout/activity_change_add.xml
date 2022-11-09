@@ -96,7 +96,8 @@
                 android:ems="0"
                 android:hint="Valor"
                 android:inputType="textPersonName"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:outlineProvider="none" />
         </LinearLayout>
 
         <LinearLayout
