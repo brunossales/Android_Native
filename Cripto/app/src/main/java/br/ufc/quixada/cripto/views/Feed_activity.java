@@ -41,7 +41,7 @@ public class Feed_activity extends AppCompatActivity {
 
     BottomNavigationView nav;
 
-    TextView  textViewBemVindo;
+    TextView textViewBemVindo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +87,10 @@ public class Feed_activity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.aboutwithus:
-                        Toast.makeText(Feed_activity.this, "Sobre pressionado", Toast.LENGTH_SHORT).show();
+                        intent = null;
+                        intent = new Intent(Feed_activity.this, About_activity.class);
+                        intent.putExtra(Codes.Key_BemVindo, nameUser);
+                        startActivity(intent);
                         break;
 
                     default:
@@ -144,7 +147,6 @@ public class Feed_activity extends AppCompatActivity {
             String simbolo = data.getExtras().getString( Codes.Key_Simbolo);
 
             Criptomoeda cri = new Criptomoeda(nome, simbolo, valor);
-            Toast.makeText(this, valor, Toast.LENGTH_SHORT).show();
 
             criptoDAO.addCripto(cri);
             customAdapter.notifyDataSetChanged();

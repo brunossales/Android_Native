@@ -92,7 +92,10 @@ public class Find_activity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.aboutwithus:
-                        Toast.makeText(Find_activity.this, "Sobre pressionado", Toast.LENGTH_SHORT).show();
+                        intent = null;
+                        intent = new Intent(Find_activity.this, About_activity.class);
+                        intent.putExtra(Codes.Key_BemVindo, nameUser);
+                        startActivity(intent);
                         break;
 
                     default:

@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/squre"
+                android:paddingLeft="20dp"
                 android:text="Nome"
                 android:textColor="#1B1414"
                 android:textStyle="bold" />
@@ -38,7 +39,7 @@
                 android:id="@+id/edtNomeTela02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.8"
+                android:layout_weight="3"
                 android:ems="10"
                 android:hint="Nome"
                 android:inputType="textPersonName"
@@ -58,6 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/squre"
+                android:paddingLeft="20dp"
                 android:text="Símbolo"
                 android:textColor="#1B1414"
                 android:textStyle="bold" />
@@ -84,6 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/squre"
+                android:paddingLeft="20dp"
                 android:text="Valor"
                 android:textColor="#1B1414"
                 android:textStyle="bold" />

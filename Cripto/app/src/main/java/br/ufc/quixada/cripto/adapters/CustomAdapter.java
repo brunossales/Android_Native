@@ -93,17 +93,21 @@ public class CustomAdapter  extends  RecyclerView.Adapter<CustomAdapter.ViewHold
 
         holder.getImageViewUpdate().setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {activity.updateCripto(holder.getAdapterPosition());}
+            public void onClick(View view) {
+                Criptomoeda cri = dataSet.get(holder.getAdapterPosition());
+                activity.updateCripto(cri.getId());}
         });
 
-        holder.getSwitchButton().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        holder.getSwitchButton().setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b == true){
-                    activity.setCriptoStarFeed(holder.getAdapterPosition());
+            public void onClick(View view) {
+                if(cripto.isStar()){
+                    Criptomoeda cri = dataSet.get(holder.getAdapterPosition());
+                    activity.setCriptoStarFeed(cri.getId());
                 }
                 else{
-                    activity.setCriptoStarFeed(holder.getAdapterPosition());
+                    Criptomoeda cri = dataSet.get(holder.getAdapterPosition());
+                    activity.setCriptoStarFeed(cri.getId());
                 }
             }
         });
