@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import br.ufc.quixada.cripto.model.Criptomoeda;
 
@@ -97,6 +98,24 @@ public class CriptoDAOPreferences implements CriptoDAOInterface{
             }
         }
         return criptomoeda;
+    }
+
+    @Override
+    public ArrayList<Criptomoeda> findByName(String name) {
+        ArrayList<Criptomoeda> listFindByName = new ArrayList<>();
+        for (Criptomoeda cri : list){
+            if (cri.getNome().indexOf(name) != -1){listFindByName.add(cri);}
+        }
+        return listFindByName;
+    }
+
+    @Override
+    public List<String> getNameList() {
+        List<String> aux = new ArrayList<>();
+        for (Criptomoeda cri : list){
+            aux.add(cri.getNome());
+        }
+        return aux;
     }
 
     @Override

@@ -32,7 +32,7 @@ public class Feed_activity extends AppCompatActivity {
 
     Intent intent;
 
-    ArrayList<Criptomoeda> list, listStar = new ArrayList<Criptomoeda>();
+    ArrayList<Criptomoeda> list;
 
     CustomAdapter customAdapter;
     RecyclerView recyclerView;
@@ -40,7 +40,6 @@ public class Feed_activity extends AppCompatActivity {
     CriptoDAOInterface criptoDAO;
 
     BottomNavigationView nav;
-
 
     TextView  textViewBemVindo;
 

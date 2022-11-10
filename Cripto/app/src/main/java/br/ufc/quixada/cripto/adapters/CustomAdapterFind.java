@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import br.ufc.quixada.cripto.R;
 import br.ufc.quixada.cripto.model.Criptomoeda;
 import br.ufc.quixada.cripto.views.Find_activity;
-import br.ufc.quixada.cripto.views.Star_activity;
 
 public class CustomAdapterFind extends  RecyclerView.Adapter<CustomAdapterFind.ViewHolder>{
     ArrayList<Criptomoeda> dataSet;

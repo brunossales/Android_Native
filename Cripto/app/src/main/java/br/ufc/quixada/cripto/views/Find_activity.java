@@ -18,6 +18,9 @@ import br.ufc.quixada.cripto.model.Criptomoeda;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +28,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Find_activity extends AppCompatActivity {
     Intent intent;
@@ -39,7 +43,11 @@ public class Find_activity extends AppCompatActivity {
 
     CriptoDAOInterface criptoDAO;
 
-    ArrayList<Criptomoeda> listFind, listAll;
+    AutoCompleteTextView autoCompleteFind;
+
+    ArrayList<Criptomoeda> listFind;
+
+    LinearLayoutManager linearLayoutManager;
 
 
     @Override
@@ -53,16 +61,15 @@ public class Find_activity extends AppCompatActivity {
         userText.setText(nameUser);
 
         criptoDAO = CriptoDAOPreferences.getInstance(this);
-        listAll = criptoDAO.getListaCripto();
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Find_activity.this);
+        ArrayAdapter<String> adapterStringFind = new ArrayAdapter<String>(this,
+                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, criptoDAO.getNameList());
 
-        customAdapter = new CustomAdapterFind(this, listAll);
-        recyclerView = findViewById(R.id.recycletFindCripto);
-        recyclerView.setLayoutManager( linearLayoutManager );
-        recyclerView.setAdapter(customAdapter);
+        autoCompleteFind = findViewById(R.id.autoCompleteTextViewFind);
+        autoCompleteFind.setAdapter(adapterStringFind);
 
-        recyclerView.addItemDecoration(new DividerItemDecoration( this, DividerItemDecoration.VERTICAL));
+        linearLayoutManager = new LinearLayoutManager(Find_activity.this);
+
 
         nav = findViewById(R.id.bottomNavigationView);
 
@@ -93,5 +100,18 @@ public class Find_activity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    public void handleFind(View view){
+        String findStringBase = autoCompleteFind.getText().toString();
+        listFind = criptoDAO.findByName(findStringBase);
+        if(listFind.isEmpty()){Toast.makeText(Find_activity.this, "Não existe esse nome nos arquivos", Toast.LENGTH_SHORT).show();}
+
+        customAdapter = new CustomAdapterFind(this, listFind);
+        recyclerView = findViewById(R.id.recycletFindCripto);
+        recyclerView.setLayoutManager( linearLayoutManager );
+        recyclerView.setAdapter(customAdapter);
+
+        recyclerView.addItemDecoration(new DividerItemDecoration( this, DividerItemDecoration.VERTICAL));
     }
 }
