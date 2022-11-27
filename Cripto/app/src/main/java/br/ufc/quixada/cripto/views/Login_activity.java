@@ -97,8 +97,8 @@ public class Login_activity extends AppCompatActivity {
                                                         Login_activity.this,
                                                         ""+error,
                                                         Toast.LENGTH_SHORT).show();
-                                                loginProgressBar.setVisibility(View.INVISIBLE);
                                             }
+                                            loginProgressBar.setVisibility(View.INVISIBLE);
 
                                         }
                                     });

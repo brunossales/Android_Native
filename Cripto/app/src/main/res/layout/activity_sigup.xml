@@ -51,24 +51,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName22"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:background="@drawable/eddittext_background"
-                    android:drawableStart="@drawable/name"
-                    android:drawablePadding="16dp"
-                    android:ems="10"
-
-                    android:hint="Nome"
-                    android:inputType="textPersonName"
-                    android:padding="16dp"
-                    android:textColorHint="#ffffff" />
-
-                <EditText
-                    android:id="@+id/editTextTextPersonName2"
+                    android:id="@+id/edtRegisterEmail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="24dp"
@@ -82,10 +65,11 @@
                     android:hint="Email"
                     android:inputType="textEmailAddress"
                     android:padding="16dp"
+                    android:textColor="#E8E0E0"
                     android:textColorHint="#ffffff" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName2e"
+                    android:id="@+id/edtPasswordRegister"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="24dp"
@@ -99,10 +83,42 @@
                     android:hint="Senha"
                     android:inputType="textPassword"
                     android:padding="16dp"
+                    android:textColor="#E8E0E0"
                     android:textColorHint="#ffffff" />
 
+                <EditText
+                    android:id="@+id/edtPasswordRegisterConfirmer"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/eddittext_background"
+                    android:drawableStart="@drawable/password"
+                    android:drawablePadding="16dp"
+                    android:ems="10"
+
+                    android:hint="Confirmar Senha"
+                    android:inputType="textPassword"
+                    android:padding="16dp"
+                    android:textColor="#E8E0E0"
+                    android:textColorHint="#ffffff" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="5dp"
+                    android:buttonTint="#BAB1B1"
+                    android:fontFamily="@font/squre"
+                    android:text="Visualizar senha"
+                    android:textColor="#CCBEBE"
+                    android:textStyle="bold"
+                    app:useMaterialThemeColors="false" />
+
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/buttonRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Seguir"
@@ -111,6 +127,17 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="#ffffff"/>
+
+
+                <ProgressBar
+                    android:id="@+id/progressBarRegister"
+                    style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/white"
+                    android:visibility="invisible"
+                    android:layout_marginBottom="20dp"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
