@@ -82,6 +82,19 @@
                     android:textColor="#ffffff"
                     android:textColorHint="#ffffff" />
 
+                <CheckBox
+                    android:id="@+id/checkBoxLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="5dp"
+                    android:buttonTint="#BAB1B1"
+                    android:fontFamily="@font/squre"
+                    android:text="Visualizar senha"
+                    android:textColor="#CCBEBE"
+                    android:textStyle="bold"
+                    app:useMaterialThemeColors="false" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -127,6 +140,16 @@
                     android:textColor="#ffffff"
                     android:textSize="20sp"
                     android:textStyle="bold"/>
+
+                <ProgressBar
+                    android:id="@+id/progressBarLogin"
+                    style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/white"
+                    android:visibility="invisible"
+                    android:layout_marginTop="20dp"/>
 
                 <TextView
                     android:id="@+id/textView2"

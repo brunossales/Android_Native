@@ -18,16 +18,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Feed_activity extends AppCompatActivity {
+    private FirebaseAuth mAuth;
+
     String nameUser;
 
     Intent intent;
@@ -42,6 +47,7 @@ public class Feed_activity extends AppCompatActivity {
     BottomNavigationView nav;
 
     TextView textViewBemVindo;
+    ImageView imageLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +55,16 @@ public class Feed_activity extends AppCompatActivity {
         setContentView(R.layout.activity_feed);
         getSupportActionBar().hide();
 
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
         nameUser = getIntent().getExtras().getString(Codes.Key_BemVindo);
 
 
         textViewBemVindo = findViewById(R.id.textViewName);
-        textViewBemVindo.setText(textViewBemVindo.getText() + nameUser);
+        textViewBemVindo.setText(textViewBemVindo.getText() + currentUser.getEmail());
+
+        imageLogout = findViewById(R.id.feedLogout);
 
         criptoDAO = CriptoDAOPreferences.getInstance(this);
         list = criptoDAO.getListaCripto();
@@ -96,6 +107,16 @@ public class Feed_activity extends AppCompatActivity {
                     default:
                 }
                 return true;
+            }
+        });
+
+        imageLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth.signOut();
+                Intent intent = new Intent(Feed_activity.this, Login_activity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

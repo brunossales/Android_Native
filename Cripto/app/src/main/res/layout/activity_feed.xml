@@ -33,13 +33,12 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/feedVoltar"
+                android:id="@+id/feedLogout"
                 android:layout_width="wrap_content"
                 android:layout_height="34dp"
                 android:layout_gravity="center"
                 android:layout_weight="2"
                 android:minHeight="48dp"
-                android:onClick="backTologin"
                 app:srcCompat="?attr/homeAsUpIndicator"
                 app:tint="#1B1919"
                 tools:ignore="SpeakableTextPresentCheck" />
