@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import br.ufc.quixada.navbetweenscreens.DAO.CriptoDAOFirebase;
 import br.ufc.quixada.navbetweenscreens.DAO.CriptoDAOInterface;
 import br.ufc.quixada.navbetweenscreens.DAO.CriptoDAOPreferences;
 import br.ufc.quixada.navbetweenscreens.R;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     CustomAdapter adapter;
     RecyclerView recyclerView;
 
-    CriptoDAOInterface criptoDAO;
+    CriptoDAOFirebase criptoDAOFirebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
 
-        criptoDAO = CriptoDAOPreferences.getInstance(this);
-        lista = criptoDAO.getListaCripto();
+        criptoDAOFirebase = CriptoDAOFirebase.getInstance(this);
+        lista = criptoDAOFirebase.getListaCripto();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
+        adapter.notifyDataSetChanged();
 
         editText = findViewById(R.id.textUpdate);
         btnAdd = findViewById(R.id.buttonAdd);
@@ -66,15 +69,15 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, Codes.REQUEST_ADD);
     }
 
-    public void removerCripto(int pos){
-        criptoDAO.deleteCripto(pos);
+    public void removerCripto(String pos){
+        criptoDAOFirebase.deleteCripto(pos);
         adapter.notifyDataSetChanged();
     }
 
     public void handleEdit(View view){
-        int idAux = Integer.parseInt(editText.getText().toString());
+        String idAux = editText.getText().toString();
 
-        Criptomoeda cri = criptoDAO.getCripto(idAux);
+        Criptomoeda cri = criptoDAOFirebase.getCripto(idAux);
 
         if(cri == null){
             Toast.makeText( getApplicationContext(), "Não encontrado", Toast.LENGTH_LONG ).show();
@@ -105,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
             Criptomoeda cri = new Criptomoeda(nome, simbolo, valor);
             Toast.makeText(this, valor, Toast.LENGTH_SHORT).show();
 
-            criptoDAO.addCripto(cri);
+            criptoDAOFirebase.addCripto(cri);
             adapter.notifyDataSetChanged();
         }
         else if (requestCode == Codes.REQUEST_EDT && resultCode == Codes.Response_OK){
@@ -115,14 +118,14 @@ public class MainActivity extends AppCompatActivity {
             String idString = data.getExtras().getString(Codes.Key_ID);
 
 
-            int id = -1;
+            String id = "-1";
             if (idString != null){
-                id = Integer.parseInt(idString);
+                id = idString;
 
                 Criptomoeda c = new Criptomoeda(nome, simbolo, valor);
                 c.setId(id);
 
-                criptoDAO.editCripto(c);
+                criptoDAOFirebase.editCripto(c);
                 adapter.notifyDataSetChanged();
             }
 

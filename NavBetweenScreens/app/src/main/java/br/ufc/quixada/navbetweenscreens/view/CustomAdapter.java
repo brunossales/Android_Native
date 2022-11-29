@@ -60,14 +60,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     public void onBindViewHolder( CustomAdapter.ViewHolder holder, int position) {
         Criptomoeda cripto = dataSet.get(position);
 
-        holder.getTextViewNome().setText("ID: " + cripto.getId() + ", Nome: "  +cripto.getNome());
+        holder.getTextViewNome().setText("ID: " + position + ", Nome: "  +cripto.getNome());
         holder.getTextViewValor().setText("R$: " + cripto.getValor());
         holder.getTextViewSimbolo().setText(cripto.getSimbolo());
 
         holder.getImageViewDelete().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.removerCripto(holder.getAdapterPosition());
+                activity.removerCripto(cripto.getId());
             }
         });
 

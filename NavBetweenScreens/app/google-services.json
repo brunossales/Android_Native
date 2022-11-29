@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1033548858729",
+    "firebase_url": "https://cripto-eaa59-default-rtdb.firebaseio.com",
+    "project_id": "cripto-eaa59",
+    "storage_bucket": "cripto-eaa59.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033548858729:android:30d328e04972604b5769f8",
+        "android_client_info": {
+          "package_name": "br.ufc.quixada.cripto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033548858729-vgffktdd63t9a2nosiuatkqsalp1u2mg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCllgE13pv2Pl9kYvajebxQQKl3mi58pfc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1033548858729-vgffktdd63t9a2nosiuatkqsalp1u2mg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033548858729:android:45f98644fe8e24a85769f8",
+        "android_client_info": {
+          "package_name": "br.ufc.quixada.navbetweenscreens"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033548858729-vgffktdd63t9a2nosiuatkqsalp1u2mg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCllgE13pv2Pl9kYvajebxQQKl3mi58pfc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1033548858729-vgffktdd63t9a2nosiuatkqsalp1u2mg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -50,7 +50,7 @@ public class CriptoDAOPreferences implements CriptoDAOInterface{
     }
 
     @Override
-    public boolean deleteCripto(int criptoId) {
+    public boolean deleteCripto(String criptoId) {
 
         boolean deleted = false;
         Criptomoeda criptomoedaAux = null;
@@ -74,7 +74,7 @@ public class CriptoDAOPreferences implements CriptoDAOInterface{
     }
 
     @Override
-    public Criptomoeda getCripto(int criptoId) {
+    public Criptomoeda getCripto(String criptoId) {
         Criptomoeda criptomoeda = null;
         for (Criptomoeda cri : list){
             if (cri.getId() == criptoId){
