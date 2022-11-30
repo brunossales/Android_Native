@@ -95,7 +95,7 @@ public class CustomAdapter  extends  RecyclerView.Adapter<CustomAdapter.ViewHold
             @Override
             public void onClick(View view) {
                 Criptomoeda cri = dataSet.get(holder.getAdapterPosition());
-                activity.updateCripto(cri.getId());}
+                activity.updateCripto(cri);}
         });
 
         holder.getSwitchButton().setOnClickListener(new View.OnClickListener() {

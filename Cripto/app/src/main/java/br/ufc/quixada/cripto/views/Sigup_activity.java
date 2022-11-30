@@ -22,11 +22,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import br.ufc.quixada.cripto.R;
+import br.ufc.quixada.cripto.model.Criptomoeda;
 
 public class Sigup_activity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    EditText edtRegisterName;
     EditText edtEmailRegister;
     EditText edtPasswordRegister;
     EditText edtPasswordConfirmRegister;
@@ -45,6 +47,7 @@ public class Sigup_activity extends AppCompatActivity {
         edtEmailRegister = findViewById(R.id.edtRegisterEmail);
         edtPasswordRegister = findViewById(R.id.edtPasswordRegister);
         edtPasswordConfirmRegister = findViewById(R.id.edtPasswordRegisterConfirmer);
+        edtRegisterName = findViewById(R.id.edtRegisterNome);
         progressBarRegister = findViewById(R.id.progressBarRegister);
         btnRegister = findViewById(R.id.buttonRegister);
         checkBoxVisibilityPassword = findViewById(R.id.checkBoxRegister);
@@ -67,6 +70,7 @@ public class Sigup_activity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String registerEmail = edtEmailRegister.getText().toString();
                 String senha = edtPasswordRegister.getText().toString();
                 String confirmarSenha = edtPasswordConfirmRegister.getText().toString();

@@ -1,10 +1,13 @@
 package br.ufc.quixada.cripto.model;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.Serializable;
+import java.util.UUID;
 
 public class Criptomoeda implements Serializable {
-    static int geradorDeIds = -1;
-    int id;
+    String id;
 
 
     String nome;
@@ -16,16 +19,21 @@ public class Criptomoeda implements Serializable {
         this.nome = nomeC;
         this.simbolo = simboloC;
         this.valor = valorC;
-
-        geradorDeIds++;
-        this.id = geradorDeIds;
     }
 
-    public int getId() {
+    public Criptomoeda(){}
+
+    public void salvar(){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        setId(UUID.randomUUID().toString());
+        reference.child("moedas").child(getId()).setValue(this);
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

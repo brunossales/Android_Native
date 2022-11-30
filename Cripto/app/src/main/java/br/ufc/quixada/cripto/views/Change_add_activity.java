@@ -20,7 +20,7 @@ public class Change_add_activity extends AppCompatActivity {
     Button buttonBack;
     Button buttonAdd;
 
-    int id;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class Change_add_activity extends AppCompatActivity {
         setContentView(R.layout.activity_change_add);
         getSupportActionBar().hide();
 
-        id = -1;
+        id = "-1";
 
         edtitNome = findViewById(R.id.edtNomeTela02);
         editSimbolo = findViewById(R.id.edtSimboloTela2);
@@ -49,7 +49,7 @@ public class Change_add_activity extends AppCompatActivity {
             String idString = getIntent().getExtras().getString(Codes.Key_ID);
 
             if(idString != null ) {
-                id = Integer.parseInt(idString);
+                id = idString;
             }
 
             edtitNome.setText(nome);
@@ -74,7 +74,8 @@ public class Change_add_activity extends AppCompatActivity {
         intent.putExtra(Codes.Key_Simbolo, simbolo);
         intent.putExtra(Codes.Key_Valor, valor);
 
-        if( id >= 0) intent.putExtra(Codes.Key_ID, ""+id);
+//        Integer idInt = Integer.parseInt(id);
+        intent.putExtra(Codes.Key_ID, id);
 
         setResult(Codes.Response_OK, intent);
         finish();

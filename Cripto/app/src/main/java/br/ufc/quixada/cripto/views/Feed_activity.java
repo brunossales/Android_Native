@@ -27,7 +27,6 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Feed_activity extends AppCompatActivity {
@@ -73,11 +72,13 @@ public class Feed_activity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Feed_activity.this);
 
         customAdapter = new CustomAdapter(this, list);
+        customAdapter.notifyDataSetChanged();
         recyclerView = findViewById(R.id.recyclerCriptoFeed);
         recyclerView.setLayoutManager( linearLayoutManager );
         recyclerView.setAdapter(customAdapter);
 
         recyclerView.addItemDecoration(new DividerItemDecoration( this, DividerItemDecoration.VERTICAL));
+
 
         nav = findViewById(R.id.bottomNavigationView);
         nav.setSelectedItemId(R.id.homee);
@@ -126,35 +127,29 @@ public class Feed_activity extends AppCompatActivity {
         customAdapter.notifyDataSetChanged();
     }
 
-    public void backTologin(View v) {
-        intent = null;
-        intent = new Intent(Feed_activity.this, Login_activity.class);
-        startActivity(intent);
-    }
 
     public void handleAdd(View view){
         Intent intent = new Intent(this, Change_add_activity.class);
         startActivityForResult(intent, Codes.REQUEST_ADD);
     }
 
-    public void setCriptoStarFeed(int criptoID){
+    public void setCriptoStarFeed(String criptoID){
         criptoDAO.editIsStar(criptoID);
         customAdapter.notifyDataSetChanged();
     }
 
-    public void updateCripto(int pos){
-        Criptomoeda c = criptoDAO.getCripto(pos);
+    public void updateCripto(Criptomoeda cri){
 
-        String nome = c.getNome();
-        String simbolo = c.getSimbolo();
-        String valor = c.getValor();
-        int id = c.getId();
+        String nome = cri.getNome();
+        String simbolo = cri.getSimbolo();
+        String valor = cri.getValor();
+        String id = cri.getId();
 
         Intent intent = new Intent(this, Change_add_activity.class);
         intent.putExtra(Codes.Key_Name, nome);
         intent.putExtra(Codes.Key_Simbolo, simbolo);
         intent.putExtra(Codes.Key_Valor, valor);
-        intent.putExtra(Codes.Key_ID, ""+id);
+        intent.putExtra(Codes.Key_ID, id);
 
         startActivityForResult(intent, Codes.REQUEST_EDT);
     }
@@ -180,9 +175,9 @@ public class Feed_activity extends AppCompatActivity {
             String idString = data.getExtras().getString(Codes.Key_ID);
 
 
-            int id = -1;
+            String id = "-1";
             if (idString != null){
-                id = Integer.parseInt(idString);
+                id = idString;
 
                 Criptomoeda c = new Criptomoeda(nome, simbolo, valor);
                 c.setId(id);

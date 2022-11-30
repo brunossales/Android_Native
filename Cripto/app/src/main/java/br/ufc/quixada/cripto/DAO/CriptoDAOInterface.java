@@ -14,12 +14,12 @@ public interface CriptoDAOInterface {
 
     boolean addCripto(Criptomoeda c);
     boolean editCripto(Criptomoeda c);
-    boolean editIsStar(int criptoId);
+    boolean editIsStar(String criptoId);
 
-    boolean deleteCripto(int criptoId);
+    boolean deleteCripto(String criptoId);
     boolean deleteAll();
 
-    Criptomoeda getCripto(int criptoId);
+    Criptomoeda getCripto(String criptoId);
 
     ArrayList<Criptomoeda> findByName(String name);
 
