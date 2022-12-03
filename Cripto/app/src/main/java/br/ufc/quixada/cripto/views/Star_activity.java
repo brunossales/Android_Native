@@ -2,6 +2,7 @@ package br.ufc.quixada.cripto.views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -58,9 +59,15 @@ public class Star_activity extends AppCompatActivity {
 
 
         customAdapter = new CustomAdapterStar(this, listStar);
+
         recyclerView = findViewById(R.id.recyclerStarCripto);
         recyclerView.setLayoutManager( linearLayoutManager );
         recyclerView.setAdapter(customAdapter);
+
+        recyclerView.addItemDecoration(new DividerItemDecoration( Star_activity.this, DividerItemDecoration.VERTICAL));
+
+        customAdapter.notifyDataSetChanged();
+
 
         nav = findViewById(R.id.bottomNavigationView);
 

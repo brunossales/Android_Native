@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import br.ufc.quixada.cripto.DAO.CriptoDAOInterface;
+import br.ufc.quixada.cripto.DAO.CriptoDAOPreferences;
 import br.ufc.quixada.cripto.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.intro_activity);
 
+        CriptoDAOInterface criptoDAO = CriptoDAOPreferences.getInstance(MainActivity.this);
+        criptoDAO.getListaCripto();
+        criptoDAO.getListaCriptoStars();
         handleEvents();
     }
 

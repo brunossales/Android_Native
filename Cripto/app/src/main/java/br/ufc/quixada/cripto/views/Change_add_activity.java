@@ -3,11 +3,16 @@ package br.ufc.quixada.cripto.views;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.audiofx.AutomaticGainControl;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.core.view.Change;
+
+import br.ufc.quixada.cripto.DAO.CriptoDAOInterface;
+import br.ufc.quixada.cripto.DAO.CriptoDAOPreferences;
 import br.ufc.quixada.cripto.R;
 import br.ufc.quixada.cripto.controller.Codes;
 

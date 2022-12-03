@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufc.quixada.cripto.model.Criptomoeda;
+import br.ufc.quixada.cripto.views.Feed_activity;
 
 public interface CriptoDAOInterface {
     static CriptoDAOInterface getInstance(Context context) {
@@ -24,7 +25,7 @@ public interface CriptoDAOInterface {
     ArrayList<Criptomoeda> findByName(String name);
 
     List<String> getNameList();
-    ArrayList<Criptomoeda> getListaCripto();
+    ArrayList<Criptomoeda> getListaCripto() ;
     ArrayList<Criptomoeda> getListaCriptoStars();
 
 

@@ -47,6 +47,7 @@ public class Feed_activity extends AppCompatActivity {
 
     TextView textViewBemVindo;
     ImageView imageLogout;
+    boolean progressBar = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +55,12 @@ public class Feed_activity extends AppCompatActivity {
         setContentView(R.layout.activity_feed);
         getSupportActionBar().hide();
 
+
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        criptoDAO = CriptoDAOPreferences.getInstance(Feed_activity.this);
+        getListCriptoFeed();
 
         nameUser = getIntent().getExtras().getString(Codes.Key_BemVindo);
 
@@ -65,20 +70,16 @@ public class Feed_activity extends AppCompatActivity {
 
         imageLogout = findViewById(R.id.feedLogout);
 
-        criptoDAO = CriptoDAOPreferences.getInstance(this);
-        list = criptoDAO.getListaCripto();
-
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Feed_activity.this);
 
-        customAdapter = new CustomAdapter(this, list);
-        customAdapter.notifyDataSetChanged();
+        customAdapter = new CustomAdapter(Feed_activity.this, list);
         recyclerView = findViewById(R.id.recyclerCriptoFeed);
         recyclerView.setLayoutManager( linearLayoutManager );
         recyclerView.setAdapter(customAdapter);
 
-        recyclerView.addItemDecoration(new DividerItemDecoration( this, DividerItemDecoration.VERTICAL));
-
+        recyclerView.addItemDecoration(new DividerItemDecoration( Feed_activity.this, DividerItemDecoration.VERTICAL));
+        customAdapter.notifyDataSetChanged();
 
         nav = findViewById(R.id.bottomNavigationView);
         nav.setSelectedItemId(R.id.homee);
@@ -135,6 +136,8 @@ public class Feed_activity extends AppCompatActivity {
 
     public void setCriptoStarFeed(String criptoID){
         criptoDAO.editIsStar(criptoID);
+        criptoDAO.getListaCriptoStars();
+
         customAdapter.notifyDataSetChanged();
     }
 
@@ -189,5 +192,10 @@ public class Feed_activity extends AppCompatActivity {
             customAdapter.notifyDataSetChanged();
         }
     }
+
+    public void getListCriptoFeed(){
+        this.list = criptoDAO.getListaCripto();
+    }
+
 }
 

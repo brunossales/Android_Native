@@ -19,16 +19,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufc.quixada.cripto.model.Criptomoeda;
+import br.ufc.quixada.cripto.views.Feed_activity;
 
 public class CriptoDAOPreferences implements CriptoDAOInterface{
     private static ArrayList<Criptomoeda> list = new ArrayList<>();
+    private static ArrayList<Criptomoeda> criptoFavorites = new ArrayList<>();
+
     private static Context context;
-//    private static boolean initialized = false;
 
     private static CriptoDAOPreferences criptoDAOPreferences = null;
     private static Criptomoeda criptomoeda = null;
 
-    private CriptoDAOPreferences(Context c){ CriptoDAOPreferences.context = c;}
+    private CriptoDAOPreferences(Context c){
+        CriptoDAOPreferences.context = c;
+    }
 
     public static CriptoDAOInterface getInstance(Context context){
         if(criptoDAOPreferences == null){
@@ -41,110 +45,66 @@ public class CriptoDAOPreferences implements CriptoDAOInterface{
     @Override
     public boolean addCripto(Criptomoeda c) {
         c.salvar();
-        getListaCripto();
-//        list.add(c);
+        list.add(c);
         return true;
     }
 
     @Override
     public boolean editCripto(Criptomoeda c) {
+        getMinhasMoedasReference().child(c.getId()).setValue(c);
+        boolean edited = false;
+        for (Criptomoeda criptomoeda : list) {
+            if (criptomoeda.getId() == c.getId()) {
+                criptomoeda.setNome(c.getNome());
+                criptomoeda.setSimbolo(c.getSimbolo());
 
-        boolean edited = true;
-        try{
-            getMinhasMoedasReference().child(c.getId()).setValue(c);
-            getListaCripto();
-        }catch (Exception e){
-            edited = false;
+                criptomoeda.setValor(c.getValor());
+                edited = true;
+                break;
+            }
         }
         return edited;
-//        boolean edited = false;
-//        for (Criptomoeda criptomoeda : list){
-//            if (criptomoeda.getId() == c.getId()){
-//                criptomoeda.setNome(c.getNome());
-//                criptomoeda.setSimbolo(c.getSimbolo());
-//
-//                criptomoeda.setValor(c.getValor());
-//                edited = true;
-//                break;
-//            }
-//        }
-//        return edited;
     }
 
     @Override
     public boolean editIsStar(String criptoId) {
-        boolean modified = true;
-
-        Query nomeCriptoQuery = getMinhasMoedasReference();
-        nomeCriptoQuery.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dados : snapshot.getChildren()){
-                    Criptomoeda c = dados.getValue(Criptomoeda.class);
-                    if (c.getId().equals(criptoId)){
-                        if (c.isStar()){
-                            c.setStar(false);
-                            getMinhasMoedasReference().child(c.getId()).setValue(c);
-                            getListaCripto();
-                        }
-                        else {
-                            c.setStar(true);
-                            getMinhasMoedasReference().child(c.getId()).setValue(c);
-                            getListaCripto();
-                        }
-                        break;
-                    }
+        boolean modified = false;
+        for (Criptomoeda criptomoeda : list){
+            if (criptomoeda.getId().equals(criptoId)){
+                if (criptomoeda.isStar()){
+                    criptomoeda.setStar(false);
+                    getMinhasMoedasReference().child(criptomoeda.getId()).child("star").setValue(false);
                 }
-            }
+                else {
+                    criptomoeda.setStar(true);
+                    getMinhasMoedasReference().child(criptomoeda.getId()).child("star").setValue(true);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(
-                        context.getApplicationContext(),
-                        "Error ao pesquisar",
-                        Toast.LENGTH_SHORT).show();
+                }
+                modified = true;
+                break;
             }
-        });
-
-//        for (Criptomoeda criptomoeda : list){
-//            if (criptomoeda.getId() == criptoId){
-//                if (criptomoeda.isStar()){criptomoeda.setStar(false);}
-//                else {criptomoeda.setStar(true);}
-//                modified = true;
-//                break;
-//            }
-//        }
-        getListaCripto();
+        }
         return modified;
     }
 
     @Override
     public boolean deleteCripto(String criptoId) {
+        boolean deleted = false;
+        Criptomoeda criptomoedaAux = null;
 
-        boolean deleted = true;
-        Criptomoeda criAux = getCripto(criptoId);
+        for (Criptomoeda criptomoeda : list){
+            if (criptomoeda.getId() == criptoId){
+                criptomoedaAux = criptomoeda;
+                deleted = true;
+                break;
+            }
+        }
 
-        try{
+        if (deleted == true) {
             getMinhasMoedasReference().child(criptoId).removeValue();
-            list.remove(criAux);
-        }catch (Exception e){
-            deleted = false;
+            list.remove(criptomoedaAux);
         }
         return deleted;
-
-//        boolean deleted = false;
-//        Criptomoeda criptomoedaAux = null;
-//
-//        for (Criptomoeda criptomoeda : list){
-//            if (criptomoeda.getId() == criptoId){
-//                criptomoedaAux = criptomoeda;
-//                deleted = true;
-//                break;
-//            }
-//        }
-//
-//        if (deleted == true) list.remove(criptomoedaAux);
-//        return deleted;
     }
 
     @Override
@@ -155,34 +115,26 @@ public class CriptoDAOPreferences implements CriptoDAOInterface{
 
     @Override
     public Criptomoeda getCripto(String criptoId) {
-        try{
-            criptomoeda = new Criptomoeda();
-            getMinhasMoedasReference().child(criptoId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DataSnapshot> task) {
-                    if(task.isSuccessful()){
-                        criptomoeda = task.getResult().getValue(Criptomoeda.class);
-                    }
-                    else {
-                        Toast.makeText(
-                                context.getApplicationContext(),
-                                "Error ao pesquisar",
-                                Toast.LENGTH_SHORT).show();
+        criptomoeda = new Criptomoeda();
+        getMinhasMoedasReference().child(criptoId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if(task.isSuccessful()){
+                    criptomoeda = task.getResult().getValue(Criptomoeda.class);
+                }
+                else {
+                    Toast.makeText(
+                            context.getApplicationContext(),
+                            "Error ao pesquisar",
+                            Toast.LENGTH_SHORT).show();
                     }
                 }
             });
-        }catch (Exception e){
-            Toast.makeText(
-                    context.getApplicationContext(),
-                    "Error ao pesquisar Throw",
-                    Toast.LENGTH_SHORT).show();
-        }
-
         return criptomoeda;
     }
 
     @Override
-    public ArrayList<Criptomoeda> findByName(String name) {
+    public ArrayList<Criptomoeda> findByName(String name){
         getListaCripto();
         ArrayList<Criptomoeda> listFindByName = new ArrayList<>();
         for (Criptomoeda cri : list){
@@ -192,7 +144,7 @@ public class CriptoDAOPreferences implements CriptoDAOInterface{
     }
 
     @Override
-    public List<String> getNameList() {
+    public List<String> getNameList(){
         getListaCripto();
         List<String> aux = new ArrayList<>();
         for (Criptomoeda cri : list){
@@ -203,60 +155,48 @@ public class CriptoDAOPreferences implements CriptoDAOInterface{
 
     @Override
     public ArrayList<Criptomoeda> getListaCripto() {
-//        list.clear();
         Query nomeCriptoQuery = getMinhasMoedasReference();
-        nomeCriptoQuery.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                list.clear();
-                for (DataSnapshot dados : snapshot.getChildren()){
-                    Criptomoeda c = dados.getValue(Criptomoeda.class);
-                    list.add(c);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(
-                        context.getApplicationContext(),
-                        "Error ao pesquisar",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        nomeCriptoQuery
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        if (task.isSuccessful()){
+                            list.clear();
+                            for (DataSnapshot document : task.getResult().getChildren()){
+                                Criptomoeda c = document.getValue(Criptomoeda.class);
+                                list.add(c);
+                                Toast.makeText(
+                                        context.getApplicationContext(),
+                                        c.getNome(),
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
         return list;
     }
 
     @Override
     public ArrayList<Criptomoeda> getListaCriptoStars() {
-        ArrayList<Criptomoeda> criptoFavorites = new ArrayList<>();
         Query nomeCriptoQuery = getMinhasMoedasReference();
-        nomeCriptoQuery.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dados : snapshot.getChildren()){
-                    Criptomoeda c = dados.getValue(Criptomoeda.class);
-                    if (c.isStar()){criptoFavorites.add(c);}
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(
-                        context.getApplicationContext(),
-                        "Error ao pesquisar",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        nomeCriptoQuery
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        if (task.isSuccessful()){
+                            criptoFavorites.clear();
+                            for (DataSnapshot document : task.getResult().getChildren()){
+                                Criptomoeda c = document.getValue(Criptomoeda.class);
+                                if(c.isStar()) {
+                                    criptoFavorites.add(c);
+                                }
+                            }
+                        }
+                    }
+                });
         return criptoFavorites;
-
-//        ArrayList<Criptomoeda> criptoFavorites = new ArrayList<>();
-//        for (Criptomoeda cri : list){
-//            if(cri.isStar()){criptoFavorites.add(cri);}
-//        }
-//
-//        return criptoFavorites;
     }
 
     public DatabaseReference getMinhasMoedasReference() {

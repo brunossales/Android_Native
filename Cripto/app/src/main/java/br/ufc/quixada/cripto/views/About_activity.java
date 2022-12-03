@@ -36,6 +36,8 @@ public class About_activity extends AppCompatActivity {
         textViewNameUser = findViewById(R.id.textViewNameAbout);
         textViewNameUser.setText(textViewNameUser.getText() + nameUser);
 
+        mapView = findViewById(R.id.mapViewAbout);
+
 
         nav = findViewById(R.id.bottomNavigationView);
         nav.setSelectedItemId(R.id.aboutwithus);
