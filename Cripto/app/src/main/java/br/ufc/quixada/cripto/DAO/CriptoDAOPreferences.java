@@ -166,10 +166,6 @@ public class CriptoDAOPreferences implements CriptoDAOInterface{
                             for (DataSnapshot document : task.getResult().getChildren()){
                                 Criptomoeda c = document.getValue(Criptomoeda.class);
                                 list.add(c);
-                                Toast.makeText(
-                                        context.getApplicationContext(),
-                                        c.getNome(),
-                                        Toast.LENGTH_SHORT).show();
                             }
                         }
                     }

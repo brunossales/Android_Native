@@ -28,7 +28,6 @@ public class Sigup_activity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    EditText edtRegisterName;
     EditText edtEmailRegister;
     EditText edtPasswordRegister;
     EditText edtPasswordConfirmRegister;
@@ -47,7 +46,6 @@ public class Sigup_activity extends AppCompatActivity {
         edtEmailRegister = findViewById(R.id.edtRegisterEmail);
         edtPasswordRegister = findViewById(R.id.edtPasswordRegister);
         edtPasswordConfirmRegister = findViewById(R.id.edtPasswordRegisterConfirmer);
-        edtRegisterName = findViewById(R.id.edtRegisterNome);
         progressBarRegister = findViewById(R.id.progressBarRegister);
         btnRegister = findViewById(R.id.buttonRegister);
         checkBoxVisibilityPassword = findViewById(R.id.checkBoxRegister);

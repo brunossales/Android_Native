@@ -51,24 +51,6 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/edtRegisterNome"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:background="@drawable/eddittext_background"
-                    android:drawableStart="@drawable/name"
-                    android:drawablePadding="16dp"
-                    android:ems="10"
-
-                    android:hint="Nome"
-                    android:inputType="textPersonName"
-                    android:padding="16dp"
-                    android:textColor="#E8E0E0"
-                    android:textColorHint="#ffffff" />
-
-                <EditText
                     android:id="@+id/edtRegisterEmail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
